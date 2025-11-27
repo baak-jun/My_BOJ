@@ -1,33 +1,39 @@
 import sys
 def input():return sys.stdin.readline().rstrip()
-a=int(input())
-b=list(map(int,input().split()))
-su=b[0]+b[-1]
-nf=0
-nl=a-1
-msu=[b[0]+b[-1],0,a-1]
 
-while True:
-    if su==0:
-        print(b[msu[1]],b[msu[2]])
+a = int(input())
+
+b = list(map(int,input().split()))
+
+
+posa = 0
+posb = a-1
+
+ans = [-1000000000,-1000000000]
+mins = 2000000001
+
+
+for i in range(100000000):
+    #print(posa,posb)
+    if posa>=a or posb>=a:
         break
-    elif su>0:
-        nl-=1
-        if nf>=nl:
-            print(b[msu[1]],b[msu[2]])
-            break
-            
-    else:
-        nf+=1
-        if nf>=nl:
-            print(b[msu[1]],b[msu[2]])
-            break
+    if posb<=posa:
+        break
     
-    su=b[nf]+b[nl]
-    if abs(msu[0]) >abs(su):
-        msu[0]=su
-        msu[1]=nf
-        msu[2]=nl
-        
+    ka = b[posa]+b[posb]
+    k = abs(ka)
+    if k<mins:
+        ans = (b[posa],b[posb])
+        mins = k
+    if ka<0:
+        posa+=1
 
+    else:
+        posb-=1
     
+    
+    
+    
+        
+        
+print(*ans)
