@@ -1,2 +1,2 @@
 input()
-print(sum([ord(x)-64 for x in input()]))
+print(sum(ord(x)-64 for x in input()))
